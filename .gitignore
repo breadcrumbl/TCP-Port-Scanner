@@ -1,0 +1,13 @@
+
+# Compiled executables
+*.exe
+
+# Debug/build output
+build/
+bin/
+
+# Visual Studio Code
+.vscode/
+
+# CMake
+Cmake.txt
