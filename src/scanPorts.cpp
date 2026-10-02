@@ -1,23 +1,23 @@
 #include "../include/scanPorts.hpp"
 
-#include <stdio.h> // For printf
+#include <stdio.h> 
 #include <string>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
 // Scan a range of ports, printing out which are open
-void scanPorts(int startPort, int endPort) {
+void scanPorts(int startPort, int endPort, const char* targetIP) {
     for (int port {startPort}; port <=endPort; ++port) {
-        if(scanSinglePort(port) == 0)
+        if(scanSinglePort(port, targetIP) == 0)
             printf("Port %d is OPEN\n", port);
     }
     printf("Finished scanning ports %d to %d\n", startPort, endPort);
 }
 
 // Scan a single port, returning 0 if open, 1 if closed, and 2 if error
-int scanSinglePort(int port) {
+int scanSinglePort(int port, const char* targetIP) {
     // Turn port into string
-    const char* host { "127.0.0.1" }; //TO-DO: make this CLA
+    //const char* host { "127.0.0.1" }; //TO-DO: make this CLA
     std::string portString {std::to_string(port)};
 
     // Get address info
@@ -25,7 +25,7 @@ int scanSinglePort(int port) {
     hints.ai_family   = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
-    int iResult = getaddrinfo(host, portString.c_str(), &hints, &result);
+    int iResult = getaddrinfo(targetIP, portString.c_str(), &hints, &result);
     if (iResult != 0) {
         printf("getaddrinfo failed: %d\n", iResult);
         return 2;
