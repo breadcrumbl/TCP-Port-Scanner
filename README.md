@@ -23,8 +23,8 @@ A beginner C++ TCP port scanner for Windows, built using the Winsock API. The pr
 - Protocol is IPPROTO_TCP
 
 ### Project Structure
-Project Structure
-.
+Project Structure  
+.  
 ├── include/  
 │   └── claValidation.hpp  
 |   └── scanPorts.hpp  
