@@ -39,17 +39,18 @@ Project Structure
 ## Building
 The program has been developed using g++ and the Windows Winsock library. 
 From the project directoy, compile with:
+
 g++ -std=c++20 -Wall -Wextra src/main.cpp src/scanPorts.cpp src/claValidation.cpp -Iinclude -o PortScanner.exe -lws2_32
 
 ## Running
 ### Port Range Unspecified
-./PortScanner -ip <target IP address>
-./PortScanner -ip 127.0.0.1
-Default port range: 0 to 1023
+./PortScanner -ip <target IP address>  
+./PortScanner -ip 127.0.0.1  
+Default port range: 0 to 1023  
 ### Port Range Specified
-./PortScanner.exe -ip <target IP address> -p <start port> <end port>
-./PortScanner -ip 127.0.0.1 -p 1000 5000
-Max port range: 0 to 65,534
+./PortScanner.exe -ip <target IP address> -p <start port> <end port>  
+./PortScanner -ip 127.0.0.1 -p 1000 5000  
+Max port range: 0 to 65,534  
 
 ## Return Values
 - 0: TCP connection succeeded / Port open
