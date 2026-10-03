@@ -1,8 +1,9 @@
 
-#include "../include/claValidation.hpp"
-#include "../include/scanPorts.hpp"
+#include "claValidation.hpp"
+#include "scanPorts.hpp"
 
 #include <stdio.h> 
+#include <string>
 #include <winsock2.h>
 
 int main(int argc, char* argv[]) {
@@ -11,6 +12,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     const char* targetIP = argv[1];
+    const int startPort = (argc == 6) ? std::stoi(argv[4]) : 0;
+    const int endPort = (argc == 6) ? std::stoi(argv[5]) : 1023;
 
     // Initialize Winsock    
     WSADATA wsaData{};
@@ -21,7 +24,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Scan ports (0 to 1024 are the well-known ports)
-    scanPorts(1, 100, targetIP);
+    scanPorts(startPort, endPort, targetIP);
 
     // Clean up and return
     WSACleanup();

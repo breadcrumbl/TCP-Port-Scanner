@@ -1,4 +1,4 @@
-#include "../include/scanPorts.hpp"
+#include "scanPorts.hpp"
 
 #include <stdio.h> 
 #include <string>
