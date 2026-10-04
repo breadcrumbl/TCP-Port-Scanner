@@ -44,11 +44,11 @@ From the project directoy, compile with:
 
 ## Running
 ### Port Range Unspecified
-./PortScanner -ip <target IP address>  
+./PortScanner -ip \<target IP address\>  
 ./PortScanner -ip 127.0.0.1  
 Default port range: 1 to 1024  
 ### Port Range Specified
-./PortScanner.exe -ip <target IP address> -p <start port> <end port>  
+./PortScanner.exe -ip \<target IP address\> -p \<start port\> \<end port\>  
 ./PortScanner -ip 127.0.0.1 -p 1 5  
 Max port range: 0 to 65,534  
 
