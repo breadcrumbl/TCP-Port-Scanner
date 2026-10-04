@@ -8,12 +8,12 @@
 
 int main(int argc, char* argv[]) {
     // Check input
-    if (claValidation(argc, argv) != 0) {
+    if (isCLAValid(argc, argv) == false) {
         return 1;
     }
-    const char* targetIP = argv[1];
-    const int startPort = (argc == 6) ? std::stoi(argv[4]) : 0;
-    const int endPort = (argc == 6) ? std::stoi(argv[5]) : 1023;
+    const char* targetIP = argv[2];
+    const int startPort = (argc == 6) ? std::stoi(argv[4]) : 1;
+    const int endPort = (argc == 6) ? std::stoi(argv[5]) : 1024;
 
     // Initialize Winsock    
     WSADATA wsaData{};

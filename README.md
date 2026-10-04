@@ -46,16 +46,9 @@ g++ -std=c++20 -Wall -Wextra src/main.cpp src/scanPorts.cpp src/claValidation.cp
 ### Port Range Unspecified
 ./PortScanner -ip <target IP address>  
 ./PortScanner -ip 127.0.0.1  
-Default port range: 0 to 1023  
+Default port range: 1 to 1024  
 ### Port Range Specified
 ./PortScanner.exe -ip <target IP address> -p <start port> <end port>  
-./PortScanner -ip 127.0.0.1 -p 1000 5000  
+./PortScanner -ip 127.0.0.1 -p 1 5  
 Max port range: 0 to 65,534  
 
-## Return Values
-- 0: TCP connection succeeded / Port open
-- 1: All connection attempts failed
-- 2: Error resolving the address
-
-## Limitations
-- Currently the program treats a failed connection as a closed port when there are other reasons a connection might fail (firewall, connection timeout)

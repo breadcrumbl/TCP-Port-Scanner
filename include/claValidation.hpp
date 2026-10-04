@@ -1,3 +1,3 @@
 #pragma once
 
-int claValidation(int argc, char* argv[]);
+bool isCLAValid(int argc, char* argv[]);
