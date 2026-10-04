@@ -40,7 +40,7 @@ Project Structure
 The program has been developed using g++ and the Windows Winsock library. 
 From the project directoy, compile with:
 
-g++ -std=c++20 -Wall -Wextra src/main.cpp src/scanPorts.cpp src/claValidation.cpp -Iinclude -o PortScanner.exe -lws2_32
+```g++ -std=c++20 -Wall -Wextra src/main.cpp src/scanPorts.cpp src/claValidation.cpp -Iinclude -o PortScanner.exe -lws2_32```
 
 ## Running
 ### Port Range Unspecified
