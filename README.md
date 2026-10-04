@@ -12,7 +12,7 @@ A beginner C++ TCP port scanner for Windows, built using the Winsock API. The pr
 - For each port
     - Gets address information
     - Creates a TCP socket
-    - Tries to connect to socket, if successful prints: "Port <N> is OPEN"
+    - Tries to connect to socket and prints the result
     - Closes socket
 - Cleans up Windsock
 - Ends program
