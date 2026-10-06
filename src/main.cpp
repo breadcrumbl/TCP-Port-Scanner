@@ -11,9 +11,9 @@ int main(int argc, char* argv[]) {
     if (isCLAValid(argc, argv) == false) {
         return 1;
     }
-    const char* targetIP = argv[2];
-    const int startPort = (argc == 6) ? std::stoi(argv[4]) : 1;
-    const int endPort = (argc == 6) ? std::stoi(argv[5]) : 1024;
+    const char* targetIP { argv[2] };
+    const int startPort { (argc == 6 || argc == 5) ? std::stoi(argv[4]) : 1 };
+    const int endPort { argc == 5 ? startPort : (argc == 6 ? std::stoi(argv[5]) : 1024) };
 
     // Initialize Winsock    
     WSADATA wsaData{};

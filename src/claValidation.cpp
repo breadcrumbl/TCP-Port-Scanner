@@ -19,14 +19,16 @@ bool isCLAValid(int argc, char* argv[]) {
     }
 
     // If ports provided
-    if (argc == 6 && std::string{argv[1]} == "-ip" && std::string{argv[3]} == "-p") {
+    if ((argc == 5 || argc == 6) && std::string{argv[1]} == "-ip" && std::string{argv[3]} == "-p") {
         int startPort{}, endPort{};
         try {
             startPort = std::stoi(argv[4]); 
-            endPort = std::stoi(argv[5]);
+            if (argc == 6) {
+                endPort = std::stoi(argv[5]);
+            }
         }
         catch (const std::exception&) {
-            printf("Start and end ports must be valid integers.");
+            printf("Ports must be valid integers.");
             return false;
         }
         
@@ -34,12 +36,12 @@ bool isCLAValid(int argc, char* argv[]) {
             printf("Ports must be valid integers between 0 and 65,535.");
             return false;
         }
-        if (startPort > endPort) {
+        if (argc == 6 && startPort > endPort) {
             printf("Start port must be less than or equal to end port.");
             return false;
         }
         return true;
     }
-    printf("Usage: ./%s -ip <target IP address>\n or\n ./%s -ip <target IP address> -p <start port> <end port> \n", programName, programName);
+    printf("Usage:\n./%s -ip <target IP address>\nor\n./%s -ip <target IP address> -p <port>\nor\n./%s -ip <target IP address> -p <start port> <end port> \n", programName, programName, programName);
     return false;
 }
