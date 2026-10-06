@@ -48,7 +48,7 @@ g++ -std=c++20 -Wall -Wextra src/main.cpp src/scanPorts.cpp src/claValidation.cp
 
 ## Running  
 ### Single Port Specified
-./PortScanner -ip \<target IP address\> -p \<port\>
+./PortScanner -ip \<target IP address\> -p \<port\>  
 ./PortScanner -ip 127.0.0.1 
 ### Port Range Specified
 ./PortScanner.exe -ip \<target IP address\> -p \<start port\> \<end port\>  
