@@ -24,6 +24,7 @@ A beginner C++ TCP port scanner for Windows, built using the Winsock API. The pr
 
 ### Project Structure
 Project Structure  
+```
 .  
 ├── include/  
 │   └── claValidation.hpp  
@@ -35,6 +36,7 @@ Project Structure
 │   └── scanPorts.cpp  
 │  
 └── README.md  
+```
 
 ## Building
 The program has been developed using g++ and the Windows Winsock library. 
