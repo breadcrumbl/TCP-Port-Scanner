@@ -58,33 +58,34 @@ Default port range: 1 to 1024
 ## Non-Blocking Sockets
 ### Blocking Sockets
 While the program attempts to connect to a blocking socket, the rest of the thread does not execute. If the socket is taking a while to connect, this can hold the whol program up.
-
-     connect()\
-        |\
-        :\   
-Wait for response (~2 secs)\
-        :\
-        |\
-  conect() returns\
-        |\
-  program continues\
-
+```
+     connect()
+        |
+        :   
+Wait for response (~2 secs)
+        :
+        |
+  conect() returns
+        |
+  program continues
+```
 ### Non-Blocking Sockets
 With a non-blocking socket, connect() returns immediately, telling the program the connection has succeeded or is still in progress. If the connection is still in progress, select() is called on the socket, which waits until the connection attempt completes (by checking when the socket becomes writable to) and returns open status is completes successfully or closed status if not, or if the connection attempt times out based on a chosen time limit (500 ms in this program). The advantage of this is that a single port taking a long time will not hold up the program anymore.
 
-
-           connect()\    
-              |\
-    .---------.---------.\  
-    |                   |\   
-succeeds            in progress\    
-    |                   |\
-   OPEN              select()\    
-                        |\
-           .------------.------------.\    
-           |                         |\   
-       completes                  500 ms passes\    
-           |                         |\
-       check SO_ERROR              TIMEOUT\    
-           |                         |\
-      OPEN / CLOSED         FILTERED / UNRESPONSIVE\    
+```
+           connect()    
+              |
+    .---------.---------.  
+    |                   | 
+succeeds            in progress    
+    |                   |
+   OPEN              select()    
+                        |
+           .------------.------------.    
+           |                         |   
+       completes                  500 ms passes    
+           |                         |
+       check SO_ERROR              TIMEOUT    
+           |                         |
+      OPEN / CLOSED         FILTERED / UNRESPONSIVE
+```
