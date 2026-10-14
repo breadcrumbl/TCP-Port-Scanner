@@ -11,3 +11,7 @@ bin/
 
 # CMake
 Cmake.txt
+
+#tests
+tests/
+
