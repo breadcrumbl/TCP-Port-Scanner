@@ -60,8 +60,9 @@ Max port range: 0 to 65,534
 Default port range: 1 to 1024 
 
 ## Non-Blocking Sockets
+The program was updated to use non-blocking sockets instead of blocking.
 ### Blocking Sockets
-While the program attempts to connect to a blocking socket, the rest of the thread does not execute. If the socket is taking a while to connect, this can hold the whol program up.
+While the program attempts to connect to a blocking socket, the rest of the thread does not execute. If the socket is taking a while to connect, this can hold the whole program up.
 ```
      connect()
         |
@@ -93,3 +94,14 @@ succeeds            in progress
            |                         |
       OPEN / CLOSED         FILTERED / UNRESPONSIVE
 ```
+## Multi-Threading
+The program was updated to use multiple threads to increase the speed. How it works:\
+In the scanPorts() function:
+- Decides how many threads to use by calculating the minimum of number of ports, max threads available on computer (which defaults to 4 if no result returned), and a default maximum of 8
+- Creates a vector to contain these threads, a vector to contain each port (number and status), and an atomic counter shared by the threads
+- Starts each of the threads using emplace_back, which passes a lambda function to each thread which
+    - Fetches the next port number using the atomic counter
+    - Scans that port using scanSinglePort(), which returns a port object containing the port number and status
+    - Adds the port to the vector of ports
+## Displaying Results
+The results are printed to the console by the printPortArray() function.
