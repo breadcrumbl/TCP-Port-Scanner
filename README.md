@@ -51,7 +51,7 @@ g++ -std=c++20 -Wall -Wextra src/main.cpp src/scanPorts.cpp src/claValidation.cp
 ./PortScanner -ip \<target IP address\> -p \<port\>  
 ./PortScanner -ip 127.0.0.1 -p 80
 ### Port Range Specified
-./PortScanner.exe -ip \<target IP address\> -p \<start port\> \<end port\>  
+./PortScanner -ip \<target IP address\> -p \<start port\> \<end port\>  
 ./PortScanner -ip 127.0.0.1 -p 1 5  
 Max port range: 0 to 65,534 
 ### Ports Unspecified
