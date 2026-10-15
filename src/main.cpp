@@ -6,6 +6,8 @@
 #include <string>
 #include <winsock2.h>
 
+using namespace multiThread;
+
 int main(int argc, char* argv[]) {
     // Check input
     if (isCLAValid(argc, argv) == false) {
@@ -24,7 +26,9 @@ int main(int argc, char* argv[]) {
     }
 
     // Scan ports (0 to 1024 are the well-known ports)
-    scanPorts(startPort, endPort, targetIP);
+    std::vector<Port> ports { scanPorts(startPort, endPort, targetIP) };
+    // Print results
+    printPortArray(ports);
 
     // Clean up and return
     WSACleanup();
